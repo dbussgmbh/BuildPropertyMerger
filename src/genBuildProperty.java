@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Main {
+public class genBuildProperty {
     public static void main(String[] args) {
 
         if (args.length != 3) {
