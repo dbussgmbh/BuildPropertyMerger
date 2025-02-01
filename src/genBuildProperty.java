@@ -94,7 +94,7 @@ public class genBuildProperty {
                                 System.out.print("Welchen Zeile soll übernommen werden? (a)lte / (n)eue Version? ");
                                 String auswahl = scanner.nextLine().trim().toLowerCase();
 
-                                if (auswahl.equals("v")) {
+                                if (auswahl.equals("a")) {
                                     //writer.write(variable + "=" + alterWert);
                                     writer.write(altZeile);
                                 } else {
