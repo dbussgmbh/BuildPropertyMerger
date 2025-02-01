@@ -47,7 +47,7 @@ public class genBuildProperty {
                     if (!zeile.startsWith("#") && zeile.contains("=")) {
                         String[] teile = zeile.split("=", 2);
                         if (teile.length == 2) {
-                            altDaten.put(teile[0].trim(), teile[1].trim());
+                            altDaten.put(teile[0].trim(), zeile.trim());
                         }
                     }
                 }
@@ -81,16 +81,22 @@ public class genBuildProperty {
                         String neuerWert = teile[1].trim();
 
                         if (altDaten.containsKey(variable)) {
-                            String alterWert = altDaten.get(variable);
+
+                            String altZeile = altDaten.get(variable);
+                            String alterWert = altZeile.split("=", 2)[1].trim();
+
                             if (!neuerWert.equals(alterWert)) {
-                                System.out.println("Zeile " + lineNumber + ": Variable: " + variable);
-                                System.out.println("Wert Vor-Version: " + alterWert);
-                                System.out.println("Wert Neu-Version: " + neuerWert);
-                                System.out.print("Welchen Wert möchten Sie übernehmen? ((v)orversion/(n)eu): ");
+                                System.out.println("############# Zeile: " + lineNumber + "  ###############");
+                                System.out.println("Variable: " + variable);
+                                System.out.println("Zeile in der Alt-Datei: " + altZeile);
+                                System.out.println("Zeile in der Original-Datei: " + zeile);
+
+                                System.out.print("Welchen Zeile soll übernommen werden? (a)lte / (n)eue Version? ");
                                 String auswahl = scanner.nextLine().trim().toLowerCase();
 
                                 if (auswahl.equals("v")) {
-                                    writer.write(variable + "=" + alterWert);
+                                    //writer.write(variable + "=" + alterWert);
+                                    writer.write(altZeile);
                                 } else {
                                     //writer.write(variable + "=" + neuerWert);
                                     writer.write(zeile);
