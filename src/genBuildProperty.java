@@ -17,14 +17,14 @@ public class genBuildProperty {
             System.exit(1);
         }
 
-       // String originalDateiPfad = args[0];
-       // String altDateiPfad = args[1];
-       // String neueDateiPfad = args[2];
+        String originalDateiPfad = args[0];
+        String altDateiPfad = args[1];
+        String neueDateiPfad = args[2];
 
 
-        String originalDateiPfad = "/Users/micha/Library/CloudStorage/OneDrive-Persönlich/DBUSS_Cloud/bp_new.txt";
-        String altDateiPfad = "/Users/micha/Library/CloudStorage/OneDrive-Persönlich/DBUSS_Cloud/bp_old.txt";;
-        String neueDateiPfad = "/Users/micha/Library/CloudStorage/OneDrive-Persönlich/DBUSS_Cloud/build.properties_merge.txt";
+       // String originalDateiPfad = "/Users/micha/Library/CloudStorage/OneDrive-Persönlich/DBUSS_Cloud/bp_new.txt";
+       // String altDateiPfad = "/Users/micha/Library/CloudStorage/OneDrive-Persönlich/DBUSS_Cloud/bp_old.txt";;
+       // String neueDateiPfad = "/Users/micha/Library/CloudStorage/OneDrive-Persönlich/DBUSS_Cloud/build.properties_merge.txt";
 
         try {
             Map<String, String> altDaten = ladeAltDatei(altDateiPfad);
