@@ -125,13 +125,16 @@ public class genBuildProperty {
                 lineNumber++;
             }
 
-            //Ausgabe von verbliebenen Variablen:
-            System.out.println();
-            System.out.println("Achtung: Folgende Properties wurden in der neuen Version nicht gefunden:");
-            for (Map.Entry<String, String> entry : altDaten.entrySet()) {
-                System.out.println("-> " + entry.getKey() + " : " + entry.getValue());
+            if (altDaten.size() > 0)   //Wenn in der Liste mit bisherigen Properties Einträge verblieben sind, dann diese ausgeben:
+            {
+                System.out.println();
+                System.out.println("Achtung: Folgende bisher definierte Properties sind in der neuen Version nicht mehr vorhanden:");
+                for (Map.Entry<String, String> entry : altDaten.entrySet()) {
+                    System.out.println("-> " + entry.getValue());
 
+                }
             }
+
 
         }
 
