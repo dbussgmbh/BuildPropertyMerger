@@ -17,19 +17,20 @@ public class genBuildProperty {
             System.exit(1);
         }
 
-        String originalDateiPfad = args[0];
-        String altDateiPfad = args[1];
-        String neueDateiPfad = args[2];
+       // String originalDateiPfad = args[0];
+       // String altDateiPfad = args[1];
+       // String neueDateiPfad = args[2];
 
 
-     //   String originalDateiPfad = "/Users/micha/Library/CloudStorage/OneDrive-Persönlich/DBUSS_Cloud/build.properties_new_Version.txt";
-     //   String altDateiPfad = "/Users/micha/Library/CloudStorage/OneDrive-Persönlich/DBUSS_Cloud/build.properties_old_Version.txt";;
-     //   String neueDateiPfad = "/Users/micha/Library/CloudStorage/OneDrive-Persönlich/DBUSS_Cloud/build.properties_merge.txt";
+        String originalDateiPfad = "/Users/micha/Library/CloudStorage/OneDrive-Persönlich/DBUSS_Cloud/bp_new.txt";
+        String altDateiPfad = "/Users/micha/Library/CloudStorage/OneDrive-Persönlich/DBUSS_Cloud/bp_old.txt";;
+        String neueDateiPfad = "/Users/micha/Library/CloudStorage/OneDrive-Persönlich/DBUSS_Cloud/build.properties_merge.txt";
 
         try {
             Map<String, String> altDaten = ladeAltDatei(altDateiPfad);
             verarbeiteOriginalDatei(originalDateiPfad, altDaten, neueDateiPfad);
-            System.out.println("Die neue Datei wurde erfolgreich erstellt: " + neueDateiPfad);
+            System.out.println("----------------------------------------------");
+            System.out.println("Datei wurde erstellt: " + neueDateiPfad);
         } catch (IOException e) {
             System.err.println("Ein Fehler ist aufgetreten: " + e.getMessage());
         }
@@ -106,7 +107,13 @@ public class genBuildProperty {
                                 writer.write(zeile);
                                 writer.newLine();
                             }
+
+                            //Aus alteDaten die gefundene Variable entfernen:
+                            altDaten.remove(variable);
+
                         } else {
+                            System.out.println("############# Zeile: " + lineNumber + "  ###############");
+                            System.out.println("Info: Bisher nicht vorhandene Variable hinzugefügt: " + zeile);
                             writer.write(zeile);
                             writer.newLine();
                         }
@@ -117,6 +124,15 @@ public class genBuildProperty {
                 }
                 lineNumber++;
             }
+
+            //Ausgabe von verbliebenen Variablen:
+            System.out.println();
+            System.out.println("Achtung: Folgende Properties wurden in der neuen Version nicht gefunden:");
+            for (Map.Entry<String, String> entry : altDaten.entrySet()) {
+                System.out.println("-> " + entry.getKey() + " : " + entry.getValue());
+
+            }
+
         }
 
 
