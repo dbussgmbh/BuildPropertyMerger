@@ -75,7 +75,9 @@ public class genBuildProperty {
                 if (zeile.startsWith("#")) {
                     writer.write(zeile);
                     writer.newLine();
-                } else if (zeile.contains("=")) {
+                }
+
+                else if (zeile.contains("=")) {
                     String[] teile = zeile.split("=", 2);
                     if (teile.length == 2) {
                         String variable = teile[0].trim();
